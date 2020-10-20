@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+import re
 '''
 Exercise:
 Read the file /var/log/syslog
@@ -17,7 +17,7 @@ with open(file, 'r') as f:
 
 results = []
 for line in content:
-    if re.find(r'network',line) or re.find(r'Network',line):
+    if re.match(r'network',line) or re.match(r'Network',line):
         results.append(line)
 
 for r in results:
