@@ -1,24 +1,32 @@
 #!/usr/bin/python3
-import re
 '''
 Exercise:
 Read the file /var/log/syslog
 Search within the logs the ones belonging to Network and print them.
 '''
 
-import re
+import re, sys
 
-file = "/var/log/syslog"
+try:
+    file = sys.argv[1]
+except:
+    print('provide a valid file')
+finally:
+    file = "/var/log/syslog"
 
 
+print('Reading...')
 with open(file, 'r') as f:
     content = f.readlines()
     
-
+print('Pulled content...')
 results = []
+
+
 for line in content:
-    if re.match(r'network',line) or re.match(r'Network',line):
+    if 'network' in line.lower():
         results.append(line)
 
 for r in results:
+    pass
     print(r)
