@@ -13,7 +13,7 @@
  and your admission cost.
 '''
 
-
+import sys
 costdict = {50:list(range(1,4)), 80 : list(range(4,6)), 100 : list(range(6,11)), 200 : list(range(10,100))}
 
 
@@ -36,7 +36,8 @@ def version2():
         for k,v in costdict.items():
 
             if exp == 'q' or exp == 'quit':
-                break
+                print('Exiting application.')
+                sys.exit(0)
         
             else:
                 try:
@@ -44,6 +45,7 @@ def version2():
                         print(f'Based on your {exp} year(s) of experience your cost is ${k}.')
                 except ValueError:
                     print('Provide a number only')
+                    sys.exit(555)
 
 
 
