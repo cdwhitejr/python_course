@@ -4,12 +4,17 @@ Python 2.7 or Python 3.8
 '''
 import os
 
-file = input('Please provide and absolute path to a file: ')
+#myfile = input('Please provide and absolute path to a file: ')
+
+myfile = 'C:\Users\cdwhi\Google Drive\That Life\python_course\ex6.py'
+
+
 
 try:
-    with open(file) as f:
+    with open(myfile) as f:
         content = f.readlines()
 except FileNotFoundError as e:
     print('That file does not exist',e)
-
-lsdir = os
+finally:
+    print(os.stat(myfile))
+    print(os.getcwd())
