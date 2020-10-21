@@ -24,16 +24,24 @@ from argparse import ArgumentParser
 
 # creates argeparse environment
 def parser_creation():
-    parser = ArgumentParser(prog='Portscanner_v1.0')
-    parser.add_argument('-p', '-port', help='insert desired port [21]',required=False, type=int, nargs=1)
-    parser.add_argument('-pr', nargs=2,help='insert desired port range [21 50]',required=False,type=int, action='append')
-    parser.add_argument('-n','net', type=ipaddress.ip_network, help='insert valid IPv4/6 network address with CIDR')
-    parser.add_argument('-ip','ip',nargs=1,type=ipaddress.ip_address,help='insert valid IPv4/6 host address')
+        
+    parser = ArgumentParser(prog='ex11.py')
+    
+    
+    parser.add_argument('-p',dest='port', help='Insert desired port [21]', type=int, nargs=1)
+    parser.add_argument('-pr',dest='port_range', nargs=2,help='Insert desired port range [21 50]',required=False,type=int, action='append')
+    parser.add_argument('-net', dest='network',type=ipaddress.ip_network, help='Insert valid IPv4/6 network address with CIDR')
+    parser.add_argument('-ip',dest='host',type=ipaddress.ip_address,help='Insert valid IPv4/6 host address')
 
+    if len(sys.argv) == 1:
+        parser.print_help()
+    else:
+        parser.parse_args()
 
+parser_creation()
 # get ip address or network range
-if len(sys.argv) >= 2:
-    print(sys.argv)
+
+
 # get desired port or port range
 
 
