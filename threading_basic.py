@@ -19,14 +19,16 @@ def example():
 
 
 def worker(num):
-    print('I am worker',num,'my ppid is',os.getpid())
-    time.sleep(random.randint(1,3))
-    print
+    ppid = os.getppid()
+    pid = os.getpid()
+    print('I am worker',num,'my ppid is',ppid,'and my pid is',pid)
+    #time.sleep(random.randint(1,3))
+    
 
 threads = []
 for i in range(11):
     t = Thread(target=worker,args=(i,))
-    threads.append(t)
+    #threads.append(t)
     
     t.start()
-    t.join()
+    
