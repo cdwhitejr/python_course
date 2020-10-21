@@ -3,29 +3,38 @@
 '''
 Create a Portscanner with sockets with sockets use the gethostbyname
 and the gethostbyaddr in your code
+
+ip = 'ftp.fileviewer.com'
+print(socket.gethostbyname(ip))
+portlist = [69,21,22,23,80,443,445,21,3389,25,110]
+
+for port in portlist:
+    sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    result = sock.connect_ex((ip,port))
+    if result == 10060:
+        print(f'{port} : {result}')
+    sock.close()
 '''
 
-import ipaddress
+import socket,ipaddress,sys,os
+from threading import Thread
 
 
-x = 1
-iplist = []
-while x <256:
-    iplist.append('192.168.1.'+str(x))
-    x +=1
-
-for ip in iplist:
-    #print(ip)
+def scanport(port):
     pass
 
-network_add = ''
-subnet_mask = ''
-host_add = ''
-cidr = ''
 
-my_add = ipaddress.ip_address('192.168.1.147')
-my_net = ipaddress.ip_network('192.168.1.0/24')
-print(my_net.num_addresses)
 
-my_list = my_net.subnets()
-print(my_list)
+# get ip address or network range
+if len(sys.argv) >= 2:
+    print(sys.argv)
+# get desired port or port range
+
+
+# create function that tests desired port
+
+#determine 1 or more ports
+
+# create thread to handle multiple ip addresses at once
+
+#determine 1 or more ip addresses given
