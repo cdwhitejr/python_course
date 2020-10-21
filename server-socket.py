@@ -14,10 +14,10 @@ import socket
 server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
 #Prompt User for port to listen in on
-port = input('Please input the port to listen in on (9000 - 15000')
+port = input('Please input the port to listen in on (9000 - 15000) ')
 
 # Define server and port to listen for connections
-server.bind(('localhost', port))
+server.bind(('localhost', int(port)))
 
 # Amount of connections allowed
 print('Starting server')
