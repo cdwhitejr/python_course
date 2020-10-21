@@ -24,7 +24,7 @@ from argparse import ArgumentParser
 # creates argeparse environment
 def parser_creation():
         
-    parser = ArgumentParser(prog='ex11.py')
+    parser = ArgumentParser(prog='portscan.py')
     
     
     parser.add_argument('-p',dest='port', help='Insert desired port [21]', type=int, nargs=1)
