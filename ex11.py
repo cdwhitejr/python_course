@@ -16,13 +16,19 @@ for port in portlist:
     sock.close()
 '''
 
-import socket,ipaddress,sys,os
+import socket,ipaddress,sys,os 
 from threading import Thread
+from argparse import ArgumentParser
 
 
-def scanport(port):
-    pass
 
+# creates argeparse environment
+def parser_creation():
+    parser = ArgumentParser(prog='Portscanner_v1.0')
+    parser.add_argument('-p', '-port', help='insert desired port [21]',required=False, type=int, nargs=1)
+    parser.add_argument('-pr', nargs=2,help='insert desired port range [21 50]',required=False,type=int, action='append')
+    parser.add_argument('-n','net', type=ipaddress.ip_network, help='insert valid IPv4/6 network address with CIDR')
+    parser.add_argument('-ip','ip',nargs=1,type=ipaddress.ip_address,help='insert valid IPv4/6 host address')
 
 
 # get ip address or network range
@@ -32,6 +38,8 @@ if len(sys.argv) >= 2:
 
 
 # create function that tests desired port
+def scanport(port):
+    pass
 
 #determine 1 or more ports
 
