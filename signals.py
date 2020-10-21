@@ -1,5 +1,6 @@
 #signal.py
 
+#works on Lilnux, but not on windows
 import signal, sys
 
 def SigAlarmHandler(signal,frame):
