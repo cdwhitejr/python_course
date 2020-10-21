@@ -45,11 +45,7 @@ def ftp_worker(ftp_address):
         f.writelines(content)
     '''
 
-q = queue.Queue()
-for host  in ftplist:
-    q.put(host)
-
-   
+print(len(ftplist))
 
 # create the threads to go forth and conquer 
 def thread_it_all(howmanyT=len(ftplist)):
