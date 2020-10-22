@@ -29,10 +29,8 @@ def read_packet():
         x +=1
     
     #create table
-    table = PrettyTable(['Src IP','Dest IP','Count'])
-    for ip, count in count.most_common():
-        table.add_row([ip, count])
     table = PrettyTable(['Src IP', 'Src Port','Dest IP', 'Dest Port'])
+    
     for k,v in pktdict.items():
         
         table.add_row([pktdict[k]['src_ip'], pktdict[k]['dst_ip'], pktdict[k]['src_port'], pktdict[k]['dest_port']])
