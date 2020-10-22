@@ -33,5 +33,7 @@ def read_packet():
         table.add_row([ip, count])
     
     print(table)
+
+
+
 read_packet()
-#send_packet()
