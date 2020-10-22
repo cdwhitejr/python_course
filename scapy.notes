@@ -1,0 +1,41 @@
+
+Resource: https://scapy.readthedocs.io/en/latest/usage.html
+
+Layers:
+Ether()
+IP()
+TCP()
+Data
+
+
+# Shows fields
+ls(*layer)
+
+# creates packet of type IP()
+packet = IP()
+
+# shows attributes
+ls(packet)
+
+#assigns values to atributes
+#1
+packet.src = .... etc.
+#2
+packet1 = IP(src='192.168.1.1', dst='8.8.8.8', ttl=32)
+
+#combines previously created packets
+packet_name4 = packet/packet1
+
+#shows merged data
+ls(packet4)
+
+
+#save created packet
+wrpcap('filepath',packet_name)
+
+
+sendp(packet, loop=5, inter=2)
+
+send = layer3 packets
+sendp = layer2 packets
+sr = send and recieve
