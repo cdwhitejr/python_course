@@ -40,6 +40,7 @@ def read_packet():
         yData.append(count)
     
     #display chart
+    #Resource: https://plotly.com/python/bar-charts/
     fig = go.Figure([go.Bar(x=xData,y=yData)])
     fig.show()
     
