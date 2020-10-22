@@ -19,6 +19,9 @@ import socket,ipaddress,sys,os
 from threading import Thread
 from argparse import ArgumentParser
 
+#Global variables
+options_dict = {}
+
 #test for valid port
 def isPort(p):
     if int(p) not in range(1,65536):
@@ -34,8 +37,11 @@ def parser_creation():
     parser = ArgumentParser(prog='portscan.py')
     
     # Add Options for parser
+
     parser.add_argument('-p',dest='port', help='Insert desired port [21]', type=int, nargs=1)
     parser.add_argument('-pr',dest='port_range', nargs=2,help='Insert desired port range [21 50]',required=False,type=int, action='append')
+    
+    #determine 1 or more ip addresses given
     parser.add_argument('-net', dest='network',type=ipaddress.ip_network, help='Insert valid IPv4/6 network address with CIDR [192.168.1.0/24]')
     parser.add_argument('-ip',dest='host',type=ipaddress.ip_address,help='Insert valid IPv4/6 host address')
 
@@ -45,20 +51,23 @@ def parser_creation():
         args = parser.parse_args()
         
         try:
+            #Try block will grab all data from options provided
+
             if args.host is not None:
-                host = ipaddress.ip_address(args.host)
+                options_dict['host'] = ipaddress.ip_address(args.host)
 
             # get ip address or network range
             if args.network is not None:
-                netlist = list(ipaddress.ip_network(args.network).hosts())
+                options_dict['netlist'] = list(ipaddress.ip_network(args.network).hosts())
 
             
-            # get desired port or port range
+            # get desired port
             if args.port is not None:
-                port = isPort(args.port[0])
+                options_dict['port'] = isPort(args.port[0])
             
+            # get desired port range
             if args.port_range is not None:
-                portlist = list(range(isPort(args.port_range[0]),isPort(args.port_range[1])))
+                options_dict['portlist'] = list(range(isPort(args.port_range[0]),isPort(args.port_range[1])))
 
         except ValueError as e:
             print('Error:',e)
@@ -74,7 +83,7 @@ def scanport(port):
 
 # create thread to handle multiple ip addresses at once
 
-#determine 1 or more ip addresses given
+
 
 def main():
     parser_creation()
