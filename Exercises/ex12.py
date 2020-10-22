@@ -10,10 +10,6 @@ from collections import Counter
 
 def read_packet():
 
-
-    #creates empty list 
-    srcIP = []
-
     pktdict = {}
 
     packets = rdpcap('.\HTTP_traffic.pcap')
@@ -27,20 +23,20 @@ def read_packet():
             except:
                 pass
         x +=1
-    
+
     #create table
     table = PrettyTable(['Src IP', 'Src Port','Dest IP', 'Dest Port'])
-    
     for k,v in pktdict.items():
         
         table.add_row([pktdict[k]['src_ip'], pktdict[k]['dst_ip'], pktdict[k]['src_port'], pktdict[k]['dest_port']])
-    
+
 
     table_text = table.get_string()
 
     with open('extracted_data.txt','w') as f:
         f.writelines(table_text)
-           
-    
-    print(table)
+               
+    #print(table)
+
+
 read_packet()
