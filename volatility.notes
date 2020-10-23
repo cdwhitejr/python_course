@@ -17,3 +17,4 @@
 
 volatility hashdump -f reto.vmem -y 0xe1035b60 -s 0xe151ea08 > hash.txt
 
+#Then use john or w/e to crach hashdump
