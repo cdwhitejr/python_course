@@ -1,5 +1,5 @@
 
-Resource: https://scapy.readthedocs.io/en/latest/usage.html
+Resource for scapy interpreter: https://scapy.readthedocs.io/en/latest/usage.html
 
 Layers:
 Ether()
@@ -39,3 +39,12 @@ sendp(packet, loop=5, inter=2)
 send = layer3 packets
 sendp = layer2 packets
 sr = send and recieve
+
+
+variable_name = rdpcap('filepath')
+var.display() = beautiful list of conversations summary
+var.sessions() = shows picture of traffic
+
+# '####' number from var.display()
+var[####] = will show network data of particular session
+
