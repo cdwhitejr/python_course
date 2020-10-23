@@ -1,0 +1,19 @@
+#volatility.notes
+
+# GET PASSWORDS FROM WINDOWS
+
+# 1) Conduct: hivescan
+    volatility hivescan -f FILENAME
+
+# 2) Conduct: volatility hivelist specific HEX
+#   hex = vitrtual address on top line
+
+# 3) NEED VIRTUAL HEX OF SAM AND SYSTEM need sam and security for passwords
+# 0xe151ea08 0x034b5a08 \Device\HarddiskVolume1\WINDOWS\system32\config\SAM
+# 0xe1035b60 0x02a9db60 \Device\HarddiskVolume1\WINDOWS\system32\config\system
+
+
+# volatility hashdump -f reto.vmem -y [system hive offset virtual] -s [SAM offset]
+
+volatility hashdump -f reto.vmem -y 0xe1035b60 -s 0xe151ea08 > hash.txt
+
