@@ -4,6 +4,7 @@ Python 2.7 or Python 3.8
 '''
 import os, pwd, sys
 
+
 #myfile = input('Please provide and absolute path to a file: ')
 
 myfile = os.path.abspath('ex6.py')
