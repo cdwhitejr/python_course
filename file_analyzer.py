@@ -2,7 +2,7 @@
 
 
 import pefile
-
+#PE = Portable executable
 path = '/root/Desktop/Malware/Lab01-02.exe'
 
 pe = pefile.PE(path)
